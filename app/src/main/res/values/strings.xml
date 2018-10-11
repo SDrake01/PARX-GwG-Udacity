@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PARX</string>
+    <string name="badges_title">My Badges</string>
+    <string name="explore_title">Explore</string>
+
+    <string name="menu_badges">All Badges</string>
+    <string name="menu_about">About PARX</string>
+    <string name="menu_how">How it works</string>
+
+    <string name="all_badges_title">All Badges</string>
+</resources>
