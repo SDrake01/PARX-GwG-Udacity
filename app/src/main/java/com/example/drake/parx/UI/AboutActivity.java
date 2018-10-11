@@ -5,12 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.drake.parx.R;
 
-public class AllBadgesActivity extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_badges);
+        setContentView(R.layout.activity_about);
 
         // Add up navigation to the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

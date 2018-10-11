@@ -30,16 +30,18 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menu_about:
                 // Open about PARX activity
-                Toast.makeText(this, "You selected - About PARX", Toast.LENGTH_LONG).show();
-                return true;
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                this.startActivity(aboutIntent);
+                break;
             case R.id.menu_how:
                 // Open how it works activity
-                Toast.makeText(this, "You selected - How It Works", Toast.LENGTH_LONG).show();
-                return true;
+                Intent howIntent = new Intent(this, HowActivity.class);
+                this.startActivity(howIntent);
+                break;
             case R.id.menu_badges:
                 // Open all badges activity
-                Intent intent = new Intent(this, AllBadgesActivity.class);
-                this.startActivity(intent);
+                Intent badgeIntent = new Intent(this, AllBadgesActivity.class);
+                this.startActivity(badgeIntent);
                 break;
         }
         return super.onOptionsItemSelected(item);
