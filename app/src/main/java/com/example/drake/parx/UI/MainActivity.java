@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    // Inflate the menu in the actionbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    // Open selected activity from menu list
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){

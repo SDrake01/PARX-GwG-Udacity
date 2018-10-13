@@ -10,15 +10,17 @@
     </style>
 
     <style name="ParxTitleText" parent="AppTheme">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/text_size_title</item>
     </style>
 
     <style name="ParxActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="background">@color/colorPrimary</item>
         <item name="titleTextStyle">@style/ParxActionBarTitle</item>
     </style>
     <style name="ParxActionBarTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/text_size_actionbar</item>
+    </style>
+    <style name="ParxBodyText" parent="ParxTitleText">
+        <item name="android:textColor">@color/colorBodyText</item>
     </style>
 
 </resources>

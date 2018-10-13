@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="default_view_margin">8dp</dimen>
+    <dimen name="default_text_margin">4dp</dimen>
+
+    <dimen name="activity_page_side_margin">24dp</dimen>
+
+    <dimen name="text_size_actionbar">24sp</dimen>
+    <dimen name="text_size_title">14sp</dimen>
+
+</resources>

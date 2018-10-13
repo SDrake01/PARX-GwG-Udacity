@@ -4,19 +4,19 @@
     <string name="badges_title">My Badges</string>
     <string name="explore_title">Explore</string>
 
-    <string name="menu_badges">All Badges</string>
-    <string name="menu_about">About PARX</string>
-    <string name="menu_how">How it works</string>
+    <string name="menu_badges">@string/activity_badges</string>
+    <string name="menu_about">@string/activity_about</string>
+    <string name="menu_how">@string/activity_how</string>
 
     <string name="activity_badges">All Badges</string>
     <string name="activity_map">Explore Kentucky</string>
     <string name="activity_about">About PARX</string>
-    <string name="activity_how">How PARX Works</string>
+    <string name="activity_how">How it works</string>
 
     <string name="text_about_parx">PARX is a fun way to collect badges for visiting Kentucky\'s State Parks,
-    and Historic Sites.\n\nAs you visit each location, you will be making progress and earning badges
-    that reflect something specific to each place you go.\n\nThere is an Appal Badge for the Appalacian Region\n
-        Daniel Boone\'s Sheltowee Badge\n\nAnd others that you\'ll discover as you go.\n
+    and Historic Sites.\n\nAs you visit these locations, you will be making progress and earning badges
+    that reflect something specific about each place you go.\n\nThere is an Appal Badge for the Appalachian Region,\n
+        Daniel Boone\'s Sheltowee Badge.\nAnd others that you\'ll discover as you go.\n
         \n\nI hope you have fun exploring Kentucky!</string>
     <string name="text_how_it_works">PARX is easy!\n\n All you have to do is to open the app when
     you are at a State Park or State Historic Site, and your progress will be recorded automatically.</string>
