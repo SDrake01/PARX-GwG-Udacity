@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Google Play game services IDs.
+Save this file as res/values/games-ids.xml in your project.
+-->
+<resources>
+<!-- app_id -->
+<string name="app_id" translatable="false">520330934044</string>
+<!-- package_name -->
+<string name="package_name" translatable="false">com.example.drake.parx</string>
+<!-- achievement Appal Badge -->
+<string name="achievement_appal_badge" translatable="false">CgkInO6PsZIPEAIQAQ</string>
+<!-- achievement CCC Badge -->
+<string name="achievement_ccc_badge" translatable="false">CgkInO6PsZIPEAIQAg</string>
+<!-- achievement Sadie F Price Wildflower Badge -->
+<string name="achievement_sadie_f_price_wildflower_badge" translatable="false">CgkInO6PsZIPEAIQAw</string>
+<!-- achievement Sheltowee Badge -->
+<string name="achievement_sheltowee_badge" translatable="false">CgkInO6PsZIPEAIQBA</string>
+<!-- achievement Unbridled Badge -->
+<string name="achievement_unbridled_badge" translatable="false">CgkInO6PsZIPEAIQBQ</string>
+</resources>
