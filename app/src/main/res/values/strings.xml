@@ -7,7 +7,8 @@
     <string name="menu_badges">@string/activity_badges</string>
     <string name="menu_about">@string/activity_about</string>
     <string name="menu_how">@string/activity_how</string>
-    <string name="menu_map">Map</string>
+    <string name="menu_in">Sign In to Google</string>
+    <string name="menu_out">Sign Out</string>
 
     <string name="activity_badges">All Badges</string>
     <string name="activity_map">Explore Kentucky</string>
@@ -22,5 +23,7 @@
     <string name="text_how_it_works">PARX is easy!\n\n All you have to do is to open the app when
     you are at a State Park or State Historic Site, and your progress will be recorded automatically.</string>
     <string name="title_activity_maps">Explore Kentucky</string>
+
+    <string name="signin_other_error">There was an error, sign-in failed</string>
 
 </resources>
