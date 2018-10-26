@@ -28,7 +28,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     View view;
     private GoogleMap parxFragMap;
     MapView parxMapView;
-    static final LatLng kyCapitol = new LatLng(38.186701, -84.875318);
+    static final LatLng kyStartPoint = new LatLng(37.781769169474, -85.812174864113);
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_map, container, false);
@@ -55,9 +55,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         parxFragMap = googleMap;
 
         parxFragMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        parxFragMap.moveCamera(CameraUpdateFactory.newLatLngZoom(kyCapitol, 15));
+        parxFragMap.moveCamera(CameraUpdateFactory.newLatLngZoom(kyStartPoint, 6.65f));
 
-//        Polygon polyFtHarrod = parxMap.addPolygon(StateParks.parkOldFortHarrod);
         StateParks.addParks(parxFragMap);
 
         parxFragMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {

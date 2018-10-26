@@ -34,6 +34,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng recLatLong = getIntent().getExtras().getParcelable("latLong");
 
         StateParks.addParks(parxActMap);
-        parxActMap.moveCamera(CameraUpdateFactory.newLatLngZoom(recLatLong, 15));
+        parxActMap.moveCamera(CameraUpdateFactory.newLatLngZoom(recLatLong, 14));
     }
 }

@@ -1,5 +1,6 @@
 package com.example.drake.parx.UI;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -21,23 +22,29 @@ import com.google.android.gms.games.Games;
 import com.google.android.gms.games.Player;
 import com.google.android.gms.games.PlayersClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
 
-//    // Client used to sign in with Google APIs
-//    private GoogleSignInClient parxGoogleSignInClient = null;
     // Request code used when invoking an external client
     private static final int RC_SIGN_IN = 9001;
+    // Request code used when showing all achievement badges
+    private static final int RC_ACHIEVEMENT_UI = 9003;
     // Account used to hold the signed in player
-    private static GoogleSignInAccount signedInAccount;
+    public static GoogleSignInAccount signedInAccount;
     String gamerId = "nope";
+    // Context variable used to get strings in the State Parks class
+    public static Context PARX_CONTEXT;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Itialize PARX_CONTEXT
+        PARX_CONTEXT = this;
 
         //* * * * * * SIGN IN TO GOOGLE PLAY GAMES * * * * * *
         //****************************************************
@@ -46,14 +53,16 @@ public class MainActivity extends AppCompatActivity {
             // player is signed in
             // get the player's user account info
             // get badges from the server for the user account
-            Toast.makeText(this, "signed in as: "+String.valueOf(signedInAccount), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "signed in as: "+String.valueOf(signedInAccount), Toast.LENGTH_SHORT).show();
         }else {
             // player is not signed in
             // cannot use silent sign-in if trying to release as 'family values' app
-            Toast.makeText(this, "Not signed in", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Not signed in", Toast.LENGTH_SHORT).show();
             //startSignInIntent();
         }
     }
+// *******************   End of onCreate method   *******************
+
 
 
     // Inflate the menu in the actionbar
@@ -79,9 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 this.startActivity(howIntent);
                 break;
             case R.id.menu_badges:
-                // Open all badges activity
-                Intent badgeIntent = new Intent(this, AllBadgesActivity.class);
-                this.startActivity(badgeIntent);
+                // Open default all achievements activity from Google Play Games API
+                showAchievements();
                 break;
             case R.id.menu_sign_in:
                 // Open Google Play Games interactive sign in dialog
@@ -113,8 +121,7 @@ public class MainActivity extends AppCompatActivity {
             if (result.isSuccess()) {
                 // The signed in account is stored in the result.
                 signedInAccount = result.getSignInAccount();
-                gamerId = String.valueOf(signedInAccount);
-                Toast.makeText(this, "Signed in: "+gamerId, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.signin_success), Toast.LENGTH_LONG).show();
             } else {
                 String message = result.getStatus().getStatusMessage();
                 if (message == null || message.isEmpty()) {
@@ -132,9 +139,24 @@ public class MainActivity extends AppCompatActivity {
         signOutClient.signOut().addOnCompleteListener(this,
                 new OnCompleteListener<Void>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getApplicationContext(), "Signed Out", Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<Void> task) {;
+                        Toast.makeText(getApplicationContext(), getString(R.string.signout_success), Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    private void showAchievements() {
+        if (GoogleSignIn.getLastSignedInAccount(this) != null) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .getAchievementsIntent()
+                    .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                        @Override
+                        public void onSuccess(Intent intent) {
+                            startActivityForResult(intent, RC_ACHIEVEMENT_UI);
+                        }
+                    });
+        } else {
+            Toast.makeText(this, getString(R.string.signin_badges), Toast.LENGTH_LONG).show();
+        }
     }
 }
