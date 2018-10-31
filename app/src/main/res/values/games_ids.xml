@@ -4,18 +4,24 @@ Google Play game services IDs.
 Save this file as res/values/games-ids.xml in your project.
 -->
 <resources>
-<!-- app_id -->
-<string name="app_id" translatable="false">520330934044</string>
-<!-- package_name -->
-<string name="package_name" translatable="false">com.example.drake.parx</string>
-<!-- achievement Appal Badge -->
-<string name="achievement_appal_badge" translatable="false">CgkInO6PsZIPEAIQAQ</string>
-<!-- achievement CCC Badge -->
-<string name="achievement_ccc_badge" translatable="false">CgkInO6PsZIPEAIQAg</string>
-<!-- achievement Sadie F Price Wildflower Badge -->
-<string name="achievement_sadie_f_price_wildflower_badge" translatable="false">CgkInO6PsZIPEAIQAw</string>
-<!-- achievement Sheltowee Badge -->
-<string name="achievement_sheltowee_badge" translatable="false">CgkInO6PsZIPEAIQBA</string>
-<!-- achievement Unbridled Badge -->
-<string name="achievement_unbridled_badge" translatable="false">CgkInO6PsZIPEAIQBQ</string>
+    <!-- app_id -->
+    <string name="app_id" translatable="false">520330934044</string>
+    <!-- package_name -->
+    <string name="package_name" translatable="false">com.example.drake.parx</string>
+    <!-- achievement Appal Badge -->
+    <string name="achievement_appal_badge" translatable="false">CgkInO6PsZIPEAIQAQ</string>
+    <!-- achievement CCC Badge -->
+    <string name="achievement_ccc_badge" translatable="false">CgkInO6PsZIPEAIQAg</string>
+    <!-- achievement Compass Badge -->
+    <string name="achievement_compass_badge" translatable="false">CgkInO6PsZIPEAIQBw</string>
+    <!-- achievement Explorer Badge -->
+    <string name="achievement_explorer_badge" translatable="false">CgkInO6PsZIPEAIQCQ</string>
+    <!-- achievement Sadie F Price Wildflower Badge -->
+    <string name="achievement_sadie_f_price_wildflower_badge" translatable="false">CgkInO6PsZIPEAIQAw</string>
+    <!-- achievement Sheltowee Badge -->
+    <string name="achievement_sheltowee_badge" translatable="false">CgkInO6PsZIPEAIQBA</string>
+    <!-- achievement TVA Badge -->
+    <string name="achievement_tva_badge" translatable="false">CgkInO6PsZIPEAIQCA</string>
+    <!-- achievement Unbridled Badge -->
+    <string name="achievement_unbridled_badge" translatable="false">CgkInO6PsZIPEAIQBQ</string>
 </resources>

@@ -22,7 +22,8 @@
         \n\nI hope you have fun exploring Kentucky!</string>
     <string name="text_how_it_works">PARX is easy!\n\n All you have to do is to open the app when
     you are at a State Park or State Historic Site, and your progress will be recorded automatically.</string>
-    <string name="title_activity_maps">Explore Kentucky</string>
+
+    <string name="title_badge_card">Badge Name</string>
 
     <string name="signin_other_error">There was an error, sign-in failed</string>
     <string name="signin_success">You are signed in</string>

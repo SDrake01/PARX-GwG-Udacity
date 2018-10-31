@@ -1,8 +1,11 @@
 package com.example.drake.parx.UI;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,8 +13,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import com.example.drake.parx.R;
+import com.example.drake.parx.Utilities.AchievementsUtility;
+import com.example.drake.parx.ViewModels.BadgesViewModel;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -19,11 +23,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.games.Games;
-import com.google.android.gms.games.Player;
-import com.google.android.gms.games.PlayersClient;
+import com.google.android.gms.games.achievement.Achievement;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,9 +37,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int RC_ACHIEVEMENT_UI = 9003;
     // Account used to hold the signed in player
     public static GoogleSignInAccount signedInAccount;
-    String gamerId = "nope";
-    // Context variable used to get strings in the State Parks class
-    public static Context PARX_CONTEXT;
+    // Context variable used to pass this context to another class
+    public static Context parxContext;
+    // ViewModel instance used by the live data observer
+    private BadgesViewModel parxViewModel;
 
 
     @Override
@@ -43,23 +48,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Itialize PARX_CONTEXT
-        PARX_CONTEXT = this;
+        // Itialize parxContext
+        parxContext = this;
 
-        //* * * * * * SIGN IN TO GOOGLE PLAY GAMES * * * * * *
-        //****************************************************
-        // First determine if the user is already signed in
         if (isSignedIn()){
-            // player is signed in
-            // get the player's user account info
-            // get badges from the server for the user account
-//            Toast.makeText(this, "signed in as: "+String.valueOf(signedInAccount), Toast.LENGTH_SHORT).show();
+//            getSupportActionBar().setTitle(playerTitle);
+//            Toast.makeText(this, "signed in", Toast.LENGTH_SHORT).show();
+            AchievementsUtility.getAchievements(this, signedInAccount);
         }else {
-            // player is not signed in
-            // cannot use silent sign-in if trying to release as 'family values' app
-//            Toast.makeText(this, "Not signed in", Toast.LENGTH_SHORT).show();
-            //startSignInIntent();
+//            Toast.makeText(this, "not signed in", Toast.LENGTH_LONG).show();
         }
+
+        // Observe the achievements live data for changes
+        parxViewModel = ViewModelProviders.of(this).get(BadgesViewModel.class);
+        final Observer<List<Achievement>> achievementObserver = new Observer<List<Achievement>>() {
+            @Override
+            public void onChanged(@Nullable List<Achievement> achievements) {
+                // call recyclerview adapter setBadges method when created
+                BadgesFragment.badgesAdapter.setBadges(achievements);
+            }
+        };
+        parxViewModel.getPlayerAchievementList().observe(this, achievementObserver);
     }
 // *******************   End of onCreate method   *******************
 
@@ -104,7 +113,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean isSignedIn(){
-        return GoogleSignIn.getLastSignedInAccount(this) != null;
+//        return GoogleSignIn.getLastSignedInAccount(this) != null;
+        if (GoogleSignIn.getLastSignedInAccount(this) != null){
+            signedInAccount = GoogleSignIn.getLastSignedInAccount(this);
+            return true;
+        }else {
+            return false;
+        }
     }
 
     private void startSignInIntent() {
@@ -121,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
             if (result.isSuccess()) {
                 // The signed in account is stored in the result.
                 signedInAccount = result.getSignInAccount();
-                Toast.makeText(this, getString(R.string.signin_success), Toast.LENGTH_LONG).show();
             } else {
                 String message = result.getStatus().getStatusMessage();
                 if (message == null || message.isEmpty()) {
@@ -139,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         signOutClient.signOut().addOnCompleteListener(this,
                 new OnCompleteListener<Void>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {;
+                    public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(getApplicationContext(), getString(R.string.signout_success), Toast.LENGTH_LONG).show();
                     }
                 });

@@ -1,8 +1,10 @@
 package com.example.drake.parx.UI;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.drake.parx.Data.StateParks;
@@ -35,5 +37,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         StateParks.addParks(parxActMap);
         parxActMap.moveCamera(CameraUpdateFactory.newLatLngZoom(recLatLong, 14));
+
+        // Check for permissions to show the players current location on the map
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            parxActMap.setMyLocationEnabled(true);
+        } else {
+            // Show rationale and request permission.
+        }
     }
 }
