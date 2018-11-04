@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.example.drake.parx.Data.StateParks;
+import com.example.drake.parx.Data.StateParkMarkers;
 import com.example.drake.parx.R;
 import com.example.drake.parx.Utilities.GeofenceTransitionsUtility;
 import com.example.drake.parx.Utilities.PermissionsUtility;
@@ -48,10 +48,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // I don't know if I need to do this here, but I also don't know any better
         // so here goes
         capitalGeofence = new Geofence.Builder()
-                .setRequestId("Ky Capital Geofence")
-//                .center(new  LatLng(38.185949,-84.875531)) // KY State Capital
-//                .center(new LatLng(38.182541,-84.881103)) // Tanglewood
-                .setCircularRegion(38.182541,-84.881103,250)
+                .setRequestId("I see you are at work right now!")
+                .setCircularRegion(38.202031,-84.874209,300)
                 .setExpirationDuration(60*60*1000)
                 .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER|Geofence.GEOFENCE_TRANSITION_EXIT)
                 .build();
@@ -105,7 +103,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         parxActMap = googleMap;
         LatLng recLatLong = getIntent().getExtras().getParcelable("latLong");
 
-        StateParks.addParks(parxActMap);
+        StateParkMarkers.addParks(parxActMap);
         parxActMap.moveCamera(CameraUpdateFactory.newLatLngZoom(recLatLong, 14));
 
         // Verify has granted permission for fine location access
@@ -115,10 +113,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Add a circle matching the geofence for testing purposes only
         // to show TanglewoodGeofence
         parxActMap.addCircle(new CircleOptions()
-//                .center(new  LatLng(38.185949,-84.875531)) // KY State Capital
-                .center(new LatLng(38.182541,-84.881103)) // Tanglewood
-                .radius(250)
-                .strokeWidth(1)
+                .center(new LatLng(38.202031,-84.874209))
+                .radius(300)
+                .strokeWidth(2)
                 .fillColor(R.color.colorPrimary));
     }
 

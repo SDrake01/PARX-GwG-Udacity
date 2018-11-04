@@ -1,17 +1,15 @@
 package com.example.drake.parx.UI;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.drake.parx.Data.StateParks;
+import com.example.drake.parx.Data.StateParkMarkers;
 import com.example.drake.parx.R;
 import com.example.drake.parx.Utilities.PermissionsUtility;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -20,8 +18,6 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
-
-import java.util.Objects;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
@@ -63,7 +59,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             parxFragMap.moveCamera(CameraUpdateFactory.newLatLngZoom(kyStartPoint, 6.3f));
         }
 
-        StateParks.addParks(parxFragMap);
+        StateParkMarkers.addParks(parxFragMap);
 
         parxFragMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
