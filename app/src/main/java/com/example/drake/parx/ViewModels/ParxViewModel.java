@@ -10,7 +10,7 @@ import com.example.drake.parx.UI.MainActivity;
 import com.google.android.gms.games.achievement.Achievement;
 import java.util.List;
 
-public class BadgesViewModel extends ViewModel {
+public class ParxViewModel extends ViewModel {
 
     private static final MutableLiveData<List<Achievement>> playerAchievementList = new MutableLiveData<>();
 

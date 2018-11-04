@@ -1,8 +1,8 @@
 package com.example.drake.parx.Utilities;
 
 import android.content.Context;
-import android.widget.Toast;
-import com.example.drake.parx.ViewModels.BadgesViewModel;
+
+import com.example.drake.parx.ViewModels.ParxViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.games.AnnotatedData;
 import com.google.android.gms.games.Games;
@@ -21,7 +21,7 @@ public class AchievementsUtility {
                 .addOnSuccessListener(new OnSuccessListener<AnnotatedData<AchievementBuffer>>() {
                     @Override
                     public void onSuccess(AnnotatedData<AchievementBuffer> achievementBufferAnnotatedData) {
-                        // Build a list of achievement objects and send it to the BadgesViewModel
+                        // Build a list of achievement objects and send it to the ParxViewModel
                         // for the map fragment recyclerview to use
                         AchievementBuffer achBuffer = achievementBufferAnnotatedData.get();
                         Iterator<Achievement> iterator = achBuffer.iterator();
@@ -29,7 +29,7 @@ public class AchievementsUtility {
                         while (iterator.hasNext()){
                             achList.add(iterator.next());
                         }
-                        BadgesViewModel.setPlayerAchievementList(achList);
+                        ParxViewModel.setPlayerAchievementList(achList);
                     }
                 });
     }

@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.drake.parx.R;
 import com.example.drake.parx.Utilities.AchievementsUtility;
-import com.example.drake.parx.ViewModels.BadgesViewModel;
+import com.example.drake.parx.ViewModels.ParxViewModel;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     // Context variable used to pass this context to another class
     public static Context parxContext;
     // ViewModel instance used by the live data observer
-    private BadgesViewModel parxViewModel;
+    private ParxViewModel parxViewModel;
 
 
     @Override
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Observe the achievements live data for changes and update when necessary
-        parxViewModel = ViewModelProviders.of(this).get(BadgesViewModel.class);
+        parxViewModel = ViewModelProviders.of(this).get(ParxViewModel.class);
         final Observer<List<Achievement>> achievementObserver = new Observer<List<Achievement>>() {
             @Override
             public void onChanged(@Nullable List<Achievement> achievements) {

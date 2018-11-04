@@ -64,6 +64,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     .addOnSuccessListener(this, new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
+                            // Remove this after all 49 geofences get added without errors
                             Toast.makeText(MapsActivity.this, "Geofences Added Success", Toast.LENGTH_LONG).show();
                         }
                     })
