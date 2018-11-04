@@ -14,6 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.drake.parx.Data.StateParkDao;
+import com.example.drake.parx.Data.StateParkDatabase;
 import com.example.drake.parx.R;
 import com.example.drake.parx.Utilities.AchievementsUtility;
 import com.example.drake.parx.ViewModels.ParxViewModel;
@@ -43,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
     public static Context parxContext;
     // ViewModel instance used by the live data observer
     private ParxViewModel parxViewModel;
+    // Create database objects
+    private StateParkDatabase parxDb;
+    public static StateParkDao mainParxDao;
 
 
     @Override
@@ -51,7 +56,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Itialize parxContext
+        // the database may eliminate the need for this
         parxContext = this;
+
+        // Initialize the State Park Database and Dao
+        parxDb = StateParkDatabase.getDatabase(this);
+        mainParxDao = parxDb.stateParkDao();
 
         if (isSignedIn()){
             AchievementsUtility.getAchievements(this, signedInAccount);
