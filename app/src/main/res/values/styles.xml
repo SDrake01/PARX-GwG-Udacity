@@ -12,6 +12,9 @@
     <style name="ParxTitleText" parent="AppTheme">
         <item name="android:textSize">@dimen/text_size_title</item>
     </style>
+    <style name="ParxCardText" parent="AppTheme">
+        <item name="android:textSize">@dimen/text_size_card</item>
+    </style>
 
     <style name="ParxActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="titleTextStyle">@style/ParxActionBarTitle</item>

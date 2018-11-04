@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--The specific ids for each park's geofence-->
+    <string name="fence_barren_river">BarrenRiverGeofence</string>
+    <string name="fence_big_bone_lick">BigBoneLickGeofence</string>
+    <string name="fence_blue_licks">BlueLicksGeofence</string>
+    <string name="fence_breaks_interstate">BreaksGeofence</string>
+    <string name="fence_buckhorn_lake">BuckhornLakeGeofence</string>
+    <string name="fence_carr_creek">CarrCreekGeofence</string>
+    <string name="fence_carter_caves">CarterCavesGeofence</string>
+    <string name="fence_columbus_belmont">Columbus-BelmontGeofence</string>
+    <string name="fence_cumberland_falls">CumberlandFallsGeofence</string>
+    <string name="fence_dale_hollow">DaleHollowLakeGeofence</string>
+    <string name="fence_dawkins_line">DawkinsLineGeofence</string>
+    <string name="fence_thomas_walker">DrThomasWalkerGeofence</string>
+    <string name="fence_ep_tom_sawyer">E.P.\"Tom\"SawyerGeofence</string>
+    <string name="fence_fort_boonesborough">FortBoonesboroughGeofence</string>
+    <string name="fence_general_burnside">GeneralBurnsideIslandGeofence</string>
+    <string name="fence_general_butler">GeneralButlerGeofence</string>
+    <string name="fence_grayson_lake">GraysonLakeGeofence</string>
+    <string name="fence_green_river">GreenRiverLakeGeofence</string>
+    <string name="fence_greenbo_lake">GreenboLakeGeofence</string>
+    <string name="fence_isaac_Shelby">IsaacShelbyCemeteryGeofence</string>
+    <string name="fence_jefferson_davis">JeffersonDavisGeofence</string>
+    <string name="fence_jenny_wiley">JennyWileyGeofence</string>
+    <string name="fence_j_j_audubon">JohnJamesAudubonGeofence</string>
+    <string name="fence_kenlake">KenlakeGeofence</string>
+    <string name="fence_ky_dam_village">KentuckyDamVillageGeofence</string>
+    <string name="fence_kincaid_lake">KincaidLakeGeofence</string>
+    <string name="fence_kingdom_come">KingdomComeGeofence</string>
+    <string name="fence_lake_barkley">LakeBarkleyGeofence</string>
+    <string name="fence_lake_cumberland">LakeCumberlandGeofence</string>
+    <string name="fence_lake_malone">LakeMaloneGeofence</string>
+    <string name="fence_levi_jackson">LeviJacksonGeofence</string>
+    <string name="fence_lincoln_homestead">LincolnHomesteadGeofence</string>
+    <string name="fence_mineral_mound">MineralMoundGeofence</string>
+    <string name="fence_old_ky_home">MyOldKentuckyHomeGeofence</string>
+    <string name="fence_natural_bridge">NaturalBridgeGeofence</string>
+    <string name="fence_nolin_lake">NolinLakeGeofence</string>
+    <string name="fence_fort_harrod">OldFortHarrodGeofence</string>
+    <string name="fence_old_mulkey">OldMulkeyMeetinghouseGeofence</string>
+    <string name="fence_paintsville_lake">PaintsvilleLakeGeofence</string>
+    <string name="fence_pennyrile_forest">PennyrileForestGeofence</string>
+    <string name="fence_perryville_battlefield">PerryvilleGeofence</string>
+    <string name="fence_pine_mtn">PineMountainGeofence</string>
+    <string name="fence_pint_mtn_trail">PineMountainTrailGeofence</string>
+    <string name="fence_rough_river_dam">RoughRiverDamGeofence</string>
+    <string name="fence_taylorsville_lake">TaylorsvilleLakeGeofence</string>
+    <string name="fence_waveland">WavelandGeofence</string>
+    <string name="fence_white_hall">WhiteHallGeofence</string>
+    <string name="fence_wickliffe_mounds">WickliffeMoundsGeofence</string>
+    <string name="fence_william_whitley">WilliamWhitleyGeofence</string>
+    <string name="fence_yatesville_lake">YatesvilleLakeGeofence</string>
+
+</resources>

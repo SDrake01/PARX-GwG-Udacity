@@ -13,12 +13,15 @@ import android.view.ViewGroup;
 
 import com.example.drake.parx.Data.StateParks;
 import com.example.drake.parx.R;
+import com.example.drake.parx.Utilities.PermissionsUtility;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+
+import java.util.Objects;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
@@ -72,12 +75,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        // Check for permissions to show the players current location on the map
-        if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            parxFragMap.setMyLocationEnabled(true);
-        } else {
-            // Show rationale and request permission.
+        // Verify has granted permission for fine location access
+        // and request permission if not granted
+        PermissionsUtility.checkLocationPermission(getActivity(), parxFragMap);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            parxFragMap.setMyLocationEnabled(false);
+        }catch (SecurityException e){
+            // Not really necessary, just trying to turn off location access when the app is not being used
+            // to reduce battery use
         }
     }
 }

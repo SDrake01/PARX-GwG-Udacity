@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Specify the geofence radius in meters for each park-->
+    <integer name="barren_river_radius">500</integer>
+    <integer name="big_bone_lick_radius">500</integer>
+    <integer name="blue_licks_radius">500</integer>
+    <integer name="breaks_radius">500</integer>
+    <integer name="buckhorn_lake_radius">500</integer>
+    <integer name="carr_creek_radius">500</integer>
+    <integer name="carter_caves_radius">500</integer>
+    <integer name="columbus_belmont_radius">500</integer>
+    <integer name="cumberland_falls_radius">500</integer>
+    <integer name="dale_hollow_radius">500</integer>
+    <integer name="dawkins_line_radius">500</integer>
+    <integer name="dr_thomas_walker_radius">500</integer>
+    <integer name="ep_tom_sawyer_radius">500</integer>
+    <integer name="ft_boonesborough_radius">500</integer>
+    <integer name="gen_burnside_radius">500</integer>
+    <integer name="gen_butler_radius">500</integer>
+    <integer name="grayson_lake_radius">500</integer>
+    <integer name="green_river_radius">500</integer>
+    <integer name="greenbo_lake_radius">500</integer>
+    <integer name="isaac_shelby_radius">500</integer>
+    <integer name="jefferson_davis_radius">500</integer>
+    <integer name="jenny_wiley_radius">500</integer>
+    <integer name="jj_audubon_radius">500</integer>
+    <integer name="kenlake_radius">500</integer>
+    <integer name="ky_dam_village_radius">500</integer>
+    <integer name="kincaid_lake_radius">500</integer>
+    <integer name="kingdom_come_radius">500</integer>
+    <integer name="lake_barkley_radius">500</integer>
+    <integer name="lake_cumberland_radius">500</integer>
+    <integer name="lake_malone_radius">500</integer>
+    <integer name="levi_jackson_radius">500</integer>
+    <integer name="lincoln_homestead_radius">500</integer>
+    <integer name="mineral_mound_radius">500</integer>
+    <integer name="my_old_ky_home_radius">500</integer>
+    <integer name="natural_bridge_radius">500</integer>
+    <integer name="nolin_lake_radius">500</integer>
+    <integer name="old_ft_harrod_radius">500</integer>
+    <integer name="old_mulkey_radius">500</integer>
+    <integer name="paintsville_lake_radius">500</integer>
+    <integer name="pennyrile_forest_radius">500</integer>
+    <integer name="perryville_radius">500</integer>
+    <integer name="pine_mtn_radius">500</integer>
+    <integer name="pine_mtn_trail_radius">500</integer>
+    <integer name="rough_river_radius">500</integer>
+    <integer name="taylorsville_lake_radius">500</integer>
+    <integer name="waveland_radius">500</integer>
+    <integer name="white_hall_radius">500</integer>
+    <integer name="wickliffe_mounds_radius">500</integer>
+    <integer name="william_whitley_radius">500</integer>
+    <integer name="yatesville_lake_radius">500</integer>
+
+</resources>

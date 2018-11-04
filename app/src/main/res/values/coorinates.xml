@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="barren_river_lat" format="float">36.865011</string>
+    <string name="barren_river_long" format="float">-86.069094</string>
+
+    <string name="big_bone_lick_lat" format="float">38.884040</string>
+    <string name="big_bone_lick_long" format="float">-84.752442</string>
+
+    <string name="blue_lick_lat" format="float">38.432394</string>
+    <string name="blue_lick_long" format="float">-83.995528</string>
+
+    <string name="breaks_lat" format="float">37.286368</string>
+    <string name="breaks_long" format="float">-82.294548</string>
+
+    <string name="buckhorn_lat" format="float">37.306502</string>
+    <string name="buckhorn_long" format="float">-83.446001</string>
+
+    <string name="carr_creek_lat" format="float">37.232300</string>
+    <string name="carr_creek_long" format="float">-83.001149</string>
+
+    <string name="carter_caves_lat" format="float">38.369625</string>
+    <string name="carter_caves_long" format="float">-83.123696</string>
+
+    <string name="columbus_belmont_lat" format="float">36.765685</string>
+    <string name="columbus_belmont_long" format="float">-89.110792</string>
+
+    <string name="cumberland_falls_lat" format="float">36.837741</string>
+    <string name="cumberland_falls_long" format="float">-84.343672</string>
+
+    <string name="dale_hollow_lat" format="float">36.638973</string>
+    <string name="dale_hollow_long" format="float">-85.298629</string>
+
+    <string name="dawkins_line_lat" format="float">37.777780</string>
+    <string name="dawkins_line_long" format="float">-82.802175</string>
+
+    <string name="dr_thomas_walker_lat" format="float">36.839712</string>
+    <string name="dr_thomas_walker_long" format="float">-83.919291</string>
+
+    <string name="e_p_tom_sawyer_lat" format="float">38.286374</string>
+    <string name="e_p_tom_sawyer_long" format="float">-85.557418</string>
+
+    <string name="ft_boonesborough_lat" format="float">37.893792</string>
+    <string name="ft_boonesborough_long" format="float">-84.270606</string>
+
+    <string name="ft_harrod_lat" format="float">37.761862</string>
+    <string name="ft_harrod_long" format="float">-84.846334</string>
+
+    <string name="gen_burnside_lat" format="float">36.972579</string>
+    <string name="gen_burnside_long" format="float">-84.598021</string>
+
+    <string name="gen_butler_lat" format="float">38.670761</string>
+    <string name="gen_butler_long" format="float">-85.154373</string>
+
+    <string name="grayson_lake_lat" format="float">38.202236</string>
+    <string name="grayson_lake_long" format="float">-83.028227</string>
+
+    <string name="green_river_lat" format="float">37.273379</string>
+    <string name="green_river_long" format="float">-85.316753</string>
+
+    <string name="greenbo_lake_lat" format="float">38.480928</string>
+    <string name="greenbo_lake_long" format="float">-82.873414</string>
+
+    <string name="isaac_shelby_cemetery_lat" format="float">37.566354</string>
+    <string name="isaac_shelby_cemetery_long" format="float">-84.8783756</string>
+
+    <string name="jefferson_davis_lat" format="float">36.841966</string>
+    <string name="jefferson_davis_long" format="float">-87.3000070</string>
+
+    <string name="jenny_wiley_lat" format="float">37.692827</string>
+    <string name="jenny_wiley_long" format="float">-82.725660</string>
+
+    <string name="jj_audubon_lat" format="float">37.882356</string>
+    <string name="jj_audubon_long" format="float">-87.557387</string>
+
+    <string name="kincaid_lake_lat" format="float">38.724492</string>
+    <string name="kincaid_lake_long" format="float">-84.282887</string>
+
+    <string name="kenlake_lat" format="float">36.759774</string>
+    <string name="kenlake_long" format="float">-88.138662</string>
+
+    <string name="ky_dam_village_lat" format="float">36.998699</string>
+    <string name="ky_dam_village_long" format="float">-88.290722</string>
+
+    <string name="kingdom_come_lat" format="float">36.989369</string>
+    <string name="kingdom_come_long" format="float">-82.984579</string>
+
+    <string name="lake_barkley_lat" format="float">36.849366</string>
+    <string name="lake_barkley_long" format="float">-87.932055</string>
+
+    <string name="lake_cumberland_lat" format="float">36.930202</string>
+    <string name="lake_cumberland_long" format="float">-85.040820</string>
+
+    <string name="lake_malone_lat" format="float">37.079564</string>
+    <string name="lake_malone_long" format="float">-87.035399</string>
+
+    <string name="levi_jackson_lat" format="float">37.081966</string>
+    <string name="levi_jackson_long" format="float">-84.046188</string>
+
+    <string name="lincoln_homestead_lat" format="float">37.760735</string>
+    <string name="lincoln_homestead_long" format="float">-85.214731</string>
+
+    <string name="mineral_mound_lat" format="float">37.062824</string>
+    <string name="mineral_mound_long" format="float">-88.087648</string>
+
+    <string name="my_old_ky_home_lat" format="float">37.806462</string>
+    <string name="my_old_ky_home_long" format="float">-85.454648</string>
+
+    <string name="natural_bridge_lat" format="float">37.777759</string>
+    <string name="natural_bridge_long" format="float">-83.680316</string>
+
+    <string name="nolin_lake_lat" format="float">37.297261</string>
+    <string name="nolin_lake_long" format="float">-86.212412</string>
+
+    <string name="old_mulkey_lat" format="float">36.677753</string>
+    <string name="old_mulkey_long" format="float">-85.707155</string>
+
+    <string name="paintsville_lat" format="float">37.842495</string>
+    <string name="paintsville_long" format="float">-82.878918</string>
+
+    <string name="pennyrile_lat" format="float">37.072855</string>
+    <string name="pennyrile_long" format="float">-87.663465</string>
+
+    <string name="perryville_lat" format="float">37.674558</string>
+    <string name="perryville_long" format="float">-84.970345</string>
+
+    <string name="pine_mountain_lat" format="float">36.735805</string>
+    <string name="pine_mountain_long" format="float">-83.737825</string>
+
+    <string name="pine_mtn_trail_lat" format="float">37.155703</string>
+    <string name="pine_mtn_trail_long" format="float">-82.633371</string>
+
+    <string name="rough_river_lat" format="float">37.610417</string>
+    <string name="rough_river_long" format="float">-86.502052</string>
+
+    <string name="taylorsville_lat" format="float">38.025064</string>
+    <string name="taylorsville_long" format="float">-85.264680</string>
+
+    <string name="waveland_lat" format="float" >37.971392</string>
+    <string name="waveland_long" format="float">-84.536701</string>
+
+    <string name="white_hall_lat" format="float">37.833201</string>
+    <string name="white_hall_long" format="float">-84.352270</string>
+
+    <string name="wickliffe_mounds_lat" format="float">36.970782</string>
+    <string name="wickliffe_mounds_long" format="float">-89.092619</string>
+
+    <string name="william_whitley_lat" format="float">37.468384</string>
+    <string name="william_whitley_long" format="float">-84.549474</string>
+
+    <string name="yatesville_lat" format="float">38.096871</string>
+    <string name="yatesville_long" format="float">-82.683705</string>
+
+</resources>

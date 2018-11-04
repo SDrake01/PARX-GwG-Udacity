@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/tv_main_badges_card_name"
-            style="@style/ParxTitleText"
+            style="@style/ParxCardText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"

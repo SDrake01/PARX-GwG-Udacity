@@ -16,4 +16,7 @@
     <item
         android:id="@+id/menu_sign_out"
         android:title="@string/menu_out" />
+    <item
+        android:id="@+id/menu_exit"
+        android:title="Exit PARX" />
 </menu>

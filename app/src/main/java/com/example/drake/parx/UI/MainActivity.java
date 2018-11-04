@@ -4,15 +4,16 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import com.example.drake.parx.R;
 import com.example.drake.parx.Utilities.AchievementsUtility;
 import com.example.drake.parx.ViewModels.BadgesViewModel;
@@ -27,6 +28,7 @@ import com.google.android.gms.games.achievement.Achievement;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,19 +54,18 @@ public class MainActivity extends AppCompatActivity {
         parxContext = this;
 
         if (isSignedIn()){
-//            getSupportActionBar().setTitle(playerTitle);
-//            Toast.makeText(this, "signed in", Toast.LENGTH_SHORT).show();
             AchievementsUtility.getAchievements(this, signedInAccount);
         }else {
 //            Toast.makeText(this, "not signed in", Toast.LENGTH_LONG).show();
         }
 
-        // Observe the achievements live data for changes
+        // Observe the achievements live data for changes and update when necessary
         parxViewModel = ViewModelProviders.of(this).get(BadgesViewModel.class);
         final Observer<List<Achievement>> achievementObserver = new Observer<List<Achievement>>() {
             @Override
             public void onChanged(@Nullable List<Achievement> achievements) {
-                // call recyclerview adapter setBadges method when created
+                // Call recyclerview adapter setBadges method when the
+                // live data list is updated to show the updates on screen
                 BadgesFragment.badgesAdapter.setBadges(achievements);
             }
         };
@@ -108,6 +109,10 @@ public class MainActivity extends AppCompatActivity {
                 // Open Google Play Games sign out dialog
                 signOut();
                 break;
+            case R.id.menu_exit:
+                // Exit PARX app
+                finish();
+                System.exit(0);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -136,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
             if (result.isSuccess()) {
                 // The signed in account is stored in the result.
                 signedInAccount = result.getSignInAccount();
+                AchievementsUtility.getAchievements(this, signedInAccount);
             } else {
                 String message = result.getStatus().getStatusMessage();
                 if (message == null || message.isEmpty()) {
@@ -172,5 +178,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, getString(R.string.signin_badges), Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
     }
 }

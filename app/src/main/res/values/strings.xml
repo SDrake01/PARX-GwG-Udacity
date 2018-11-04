@@ -29,6 +29,11 @@
     <string name="signin_success">You are signed in</string>
     <string name="signout_success">You are signed out</string>
     <string name="signin_badges">Please sign in to see your badges</string>
+
+    <string name="perm_request_title">Location Access</string>
+    <string name="perm_request_message">PARX needs location permission\nto update progress and award badges</string>
+    <string name="perm_rationale_ok">OK</string>
+    <string name="perm_rationale_cancel">Cancel</string>
     
     <string name="park_barren_river">Barren River Lake State Resort Park</string>
     <string name="park_big_bone_lick">Big Bone Lick State Historic Site</string>
