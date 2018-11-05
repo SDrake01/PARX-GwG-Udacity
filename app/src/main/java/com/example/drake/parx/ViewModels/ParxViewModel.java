@@ -30,6 +30,10 @@ public class ParxViewModel extends AndroidViewModel {
         allParxList = newParksList;
     }
 
+    public static List<StatePark> getAllParxList(){
+        return allParxList;
+    }
+
     public ParxViewModel(@NonNull Application application){
         super(application);
 

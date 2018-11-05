@@ -11,6 +11,7 @@ import java.util.List;
 @Dao
 public interface StateParkDao {
 
+    // Need to research conflict strategies to make sure this is the best option
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertParkData(StatePark... stateParks);
 

@@ -23,5 +23,7 @@ public class GeofenceData {
 //                        Double.parseDouble(thisContext.getString(R.string.barren_river_long)),
 //                        thisContext.getResources().getInteger(R.integer.barren_river_radius))
 //                .build();
+
+
     }
 }
