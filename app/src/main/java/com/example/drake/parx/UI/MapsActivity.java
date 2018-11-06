@@ -134,7 +134,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         parxActMap = googleMap;
         LatLng recLatLong = getIntent().getExtras().getParcelable("latLong");
 
-        StateParkMarkers.addParks(parxActMap);
+//        StateParkMarkers.addParks(parxActMap);
+        StateParkMarkers.buildMapMarkers(parxActMap);
         parxActMap.moveCamera(CameraUpdateFactory.newLatLngZoom(recLatLong, 14));
 
         // Verify has granted permission for fine location access

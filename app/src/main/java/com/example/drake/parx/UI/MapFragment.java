@@ -9,23 +9,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.drake.parx.Data.StateParkMarkers;
+import com.example.drake.parx.Data.StatePark;
 import com.example.drake.parx.R;
 import com.example.drake.parx.Utilities.PermissionsUtility;
+import com.example.drake.parx.ViewModels.ParxViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     View view;
-    private GoogleMap parxFragMap;
+    public static GoogleMap parxFragMap;
     MapView parxMapView;
     static final LatLng kyStartPoint = new LatLng(37.781769169474, -85.812174864113);
     int parxFragOrientation;
+    static List<StatePark> parxList = new ArrayList<>();
+    static List<Marker> parxMarkers = new ArrayList<>();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_map, container, false);
@@ -59,8 +67,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             parxFragMap.moveCamera(CameraUpdateFactory.newLatLngZoom(kyStartPoint, 6.3f));
         }
 
-        StateParkMarkers.addParks(parxFragMap);
-
         parxFragMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -84,6 +90,21 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }catch (SecurityException e){
             // Not really necessary, just trying to turn off location access when the app is not being used
             // to reduce battery use
+        }
+    }
+
+    public static void buildMapMarkers(){
+
+        parxList = ParxViewModel.getAllParxList();
+
+        if (parxList.size() > 0) {
+            for (int i = 0; i < parxList.size(); i++) {
+                StatePark thisPark = parxList.get(i);
+                Marker listMarker = parxFragMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(thisPark.getLatitude(),thisPark.getLongitude()))
+                        .title(thisPark.getName()));
+                parxMarkers.add(listMarker);
+            }
         }
     }
 }
