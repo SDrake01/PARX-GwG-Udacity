@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.drake.parx.AsyncTasks.StateParksAsyncTask;
 import com.example.drake.parx.Data.StateParkDao;
 import com.example.drake.parx.Data.StateParkDatabase;
 import com.example.drake.parx.R;
@@ -62,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         // Initialize the State Park Database and Dao
         parxDb = StateParkDatabase.getDatabase(this);
         mainParxDao = parxDb.stateParkDao();
+
+        // Start the async task to load park data into the viewmodel
+        StateParksAsyncTask parksAsyncTask = new StateParksAsyncTask();
+        parksAsyncTask.execute();
 
         if (isSignedIn()){
             AchievementsUtility.getAchievements(this, signedInAccount);

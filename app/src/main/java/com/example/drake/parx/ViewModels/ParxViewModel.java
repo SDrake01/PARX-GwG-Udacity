@@ -6,7 +6,6 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.example.drake.parx.AsyncTasks.StateParksAsyncTask;
 import com.example.drake.parx.Data.StatePark;
 import com.google.android.gms.games.achievement.Achievement;
 
@@ -39,7 +38,7 @@ public class ParxViewModel extends AndroidViewModel {
 
         // This async task will load the State Parks from the database on a background thread
         // into allParxList
-        StateParksAsyncTask parksAsyncTask = new StateParksAsyncTask();
-        parksAsyncTask.execute(getApplication());
+//        StateParksAsyncTask parksAsyncTask = new StateParksAsyncTask();
+//        parksAsyncTask.execute(getApplication());
     }
 }
