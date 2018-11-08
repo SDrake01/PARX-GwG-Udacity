@@ -81,8 +81,8 @@ public class StatePark {
                         500),
                 new StatePark("09resort04",
                         "Cumberland Falls State Resort Park",
-                        36.837741,
-                        -84.343672,
+                        38.182249, // 36.837741
+                        -84.881169, //-84.343672
                         500),
                 new StatePark("10resort05",
                         "Dale Hollow Lake State Resort Park",

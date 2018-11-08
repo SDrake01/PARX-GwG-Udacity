@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private StateParkDatabase parxDb;
     public static StateParkDao mainParxDao;
     // Variables needed for the geofences
-    List<StatePark> parkList = new ArrayList<>();
+    public static List<StatePark> parkList = new ArrayList<>();
     List<Geofence> parxGeofenceList = new ArrayList<>();
     StatePark geoPark;
     PendingIntent parxGeoPendingIntent;
@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         if (isSignedIn()){
             AchievementsUtility.getAchievements(this, signedInAccount);
         }else {
-//            Toast.makeText(this, "not signed in", Toast.LENGTH_LONG).show();
         }
 
         // Observe the achievements live data for changes and update when necessary

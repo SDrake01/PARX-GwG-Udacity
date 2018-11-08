@@ -24,6 +24,8 @@ public interface StateParkDao {
     List<StatePark> getAllParks();
 
     @Query("SELECT * FROM statepark_table WHERE name = :nameIn")
-    StatePark getOneStatePark(String nameIn);
+    StatePark getNameStatePark(String nameIn);
 
+    @Query("SELECT * FROM statepark_table where id = :idIn")
+    StatePark getIdStatePark(String idIn);
 }

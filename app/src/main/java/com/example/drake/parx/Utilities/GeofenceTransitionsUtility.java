@@ -8,19 +8,23 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.drake.parx.Data.StatePark;
 import com.example.drake.parx.R;
+import com.example.drake.parx.UI.MainActivity;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
+
+import java.util.List;
 
 public class GeofenceTransitionsUtility extends IntentService {
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
      *
-     * @param name Used to name the worker thread, important only for debugging.
+//     * @param name Used to name the worker thread, important only for debugging.
      */
-    public GeofenceTransitionsUtility(String name) {
-        super(name);
-    }
+//    public GeofenceTransitionsUtility(String name) {
+//        super(name);
+//    }
     public GeofenceTransitionsUtility(){
         super("GeofenceTransitionUtility");
     }
@@ -46,12 +50,16 @@ public class GeofenceTransitionsUtility extends IntentService {
                 // PARX will only ever trigger one geofence at a time
                 // so use ...get(0)... to get the geofence id
                 String enterFenceId = geofencingEvent.getTriggeringGeofences().get(0).getRequestId();
+                List<StatePark> notificationParks = MainActivity.parkList;
+                int parkIndex = notificationParks.indexOf(enterFenceId);
+                StatePark enteredPark = notificationParks.get(parkIndex);
+                String enteredParkName = enteredPark.getName();
                 // Send a notification to show the player has entered a geofence
                 String CHANNEL_ID = "9";
                 NotificationCompat.Builder enterBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle("PARX Badge Progress Notice")
-                        .setContentText("For visiting "+enterFenceId)
+                        .setContentText("For visiting "+enteredParkName)
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setAutoCancel(true);
                 NotificationManagerCompat notification = NotificationManagerCompat.from(this);
