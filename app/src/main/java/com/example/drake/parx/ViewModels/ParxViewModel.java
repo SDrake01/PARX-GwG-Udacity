@@ -15,7 +15,7 @@ public class ParxViewModel extends AndroidViewModel {
 
     private static final MutableLiveData<List<Achievement>> playerAchievementList = new MutableLiveData<>();
 
-    private static List<StatePark> allParxList;
+    private static final MutableLiveData<List<StatePark>> allParxList = new MutableLiveData<>();
 
     public static void setPlayerAchievementList(List<Achievement> newPlayerList){
         playerAchievementList.setValue(newPlayerList);
@@ -26,10 +26,10 @@ public class ParxViewModel extends AndroidViewModel {
     }
 
     public static void setAllParxList(List<StatePark> newParksList){
-        allParxList = newParksList;
+        allParxList.setValue(newParksList);
     }
 
-    public static List<StatePark> getAllParxList(){
+    public LiveData<List<StatePark>> getAllParxList(){
         return allParxList;
     }
 

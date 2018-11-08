@@ -3,14 +3,12 @@ package com.example.drake.parx.UI;
 import android.app.PendingIntent;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,6 +18,7 @@ import com.example.drake.parx.AsyncTasks.StateParksAsyncTask;
 import com.example.drake.parx.Data.StatePark;
 import com.example.drake.parx.Data.StateParkDao;
 import com.example.drake.parx.Data.StateParkDatabase;
+import com.example.drake.parx.Data.StateParkMarkers;
 import com.example.drake.parx.R;
 import com.example.drake.parx.Utilities.AchievementsUtility;
 import com.example.drake.parx.Utilities.GeofenceTransitionsUtility;
@@ -36,8 +35,6 @@ import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingClient;
 import com.google.android.gms.location.GeofencingRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -54,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int RC_ACHIEVEMENT_UI = 9003;
     // Account used to hold the signed in player
     public static GoogleSignInAccount signedInAccount;
-    // Context variable used to pass this context to another class
-    public static Context parxContext;
     // ViewModel instance used by the live data observer
     private ParxViewModel parxViewModel;
     // Create database objects
@@ -65,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
     List<StatePark> parkList = new ArrayList<>();
     List<Geofence> parxGeofenceList = new ArrayList<>();
     StatePark geoPark;
-    Circle geoCircle;
-    CircleOptions geoCircleOptions;
     PendingIntent parxGeoPendingIntent;
     GeofencingClient parxGeofencingClient;
 
@@ -76,9 +69,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Itialize parxContext
-        // the database may eliminate the need for this
-        parxContext = this;
         // Instantiate the GeofencingClient
         parxGeofencingClient = LocationServices.getGeofencingClient(this);
 
@@ -109,6 +99,17 @@ public class MainActivity extends AppCompatActivity {
         parxViewModel.getPlayerAchievementList().observe(this, achievementObserver);
 
         buildGeofences();
+        // Add an observer for the state parks live data and rerun buildGeofences() when its data changes
+        parxViewModel = ViewModelProviders.of(this).get(ParxViewModel.class);
+        final Observer<List<StatePark>> stateParkListObserver = new Observer<List<StatePark>>() {
+            @Override
+            public void onChanged(@Nullable List<StatePark> stateParks) {
+                parkList = stateParks;
+                // call buildGeofences when data updates
+                buildGeofences();
+            }
+        };
+        parxViewModel.getAllParxList().observe(this, stateParkListObserver);
     }
 // *******************   End of onCreate method   *******************
 
@@ -218,12 +219,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buildGeofences(){
-        // Load the list of parks
-        if (ParxViewModel.getAllParxList() != null) {
-            parkList = ParxViewModel.getAllParxList();
-        }
         // Create the geofences if the list is not empty
-        if (parkList.size() > 0){
+        if (parkList != null && parkList.size() > 0){
             for (int i = 0; i < parkList.size(); i++) {
                 geoPark = parkList.get(i);
                 parxGeofenceList.add(new Geofence.Builder()
@@ -242,20 +239,15 @@ public class MainActivity extends AppCompatActivity {
                         .addOnSuccessListener(this, new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                // Add circles to the map so the player can see the geofences
-//                                buildGeoCircles();
-                                // Remove this after all 49 geofences get added without errors
-                                Toast.makeText(MainActivity.this, "Geofences Added Successfully", Toast.LENGTH_LONG).show();
+                                StateParkMarkers.buildMapMarkers(MapFragment.parxFragMap,parkList);
                             }
                         })
                         .addOnFailureListener(this, new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(MainActivity.this, "Failed to add geofences", Toast.LENGTH_LONG).show();
                             }
                         });
             }catch (SecurityException se){
-                Log.e("geofence permissions","permissions failed");
             }
         }
     }
