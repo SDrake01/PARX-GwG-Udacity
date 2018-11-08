@@ -35,10 +35,5 @@ public class ParxViewModel extends AndroidViewModel {
 
     public ParxViewModel(@NonNull Application application){
         super(application);
-
-        // This async task will load the State Parks from the database on a background thread
-        // into allParxList
-//        StateParksAsyncTask parksAsyncTask = new StateParksAsyncTask();
-//        parksAsyncTask.execute(getApplication());
     }
 }

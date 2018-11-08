@@ -42,10 +42,6 @@ public class GeofenceTransitionsUtility extends IntentService {
             // GEOFENCE_TRANSITION_ENTER or GEOFENCE_TRANSITION_EXIT
             // add a handler for dwell if that is implemented in the future
             if (Geofence.GEOFENCE_TRANSITION_ENTER == transitionCode){
-                // Currently testing and only need a toast that shows the player
-                // the name of the fence they entered.
-                // This will be built-out as testing continues
-                //
                 // Get the geofence id that was triggered
                 // PARX will only ever trigger one geofence at a time
                 // so use ...get(0)... to get the geofence id
@@ -54,15 +50,12 @@ public class GeofenceTransitionsUtility extends IntentService {
                 String CHANNEL_ID = "9";
                 NotificationCompat.Builder enterBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                         .setSmallIcon(R.mipmap.ic_launcher)
-                        .setContentTitle("PARX Geofence Notice")
-                        .setContentText("Entered "+enterFenceId)
+                        .setContentTitle("PARX Badge Progress Notice")
+                        .setContentText("For visiting "+enterFenceId)
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setAutoCancel(true);
                 NotificationManagerCompat notification = NotificationManagerCompat.from(this);
                 notification.notify(8,enterBuilder.build());
-                // Create a toast showing what geofence the player entered
-                Log.i("geofence entered",enterFenceId);
-                Toast.makeText(this, "Geofence entered: "+enterFenceId, Toast.LENGTH_LONG).show();
             } // *************** End of GEOFENCE_TRANSITION_ENTER handler ***************
             else if (Geofence.GEOFENCE_TRANSITION_EXIT == transitionCode){
                 // During testing, show a toast notifying the player

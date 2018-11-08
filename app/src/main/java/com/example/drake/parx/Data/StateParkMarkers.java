@@ -2,6 +2,7 @@ package com.example.drake.parx.Data;
 
 import com.example.drake.parx.ViewModels.ParxViewModel;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -17,6 +18,7 @@ public class StateParkMarkers {
     public static void buildMapMarkers(GoogleMap thisMap){
 
         parxList = ParxViewModel.getAllParxList();
+        CircleOptions geoCircleOptions;
 
         if (parxList.size() > 0) {
             for (int i = 0; i < parxList.size(); i++) {
@@ -25,6 +27,11 @@ public class StateParkMarkers {
                         .position(new LatLng(thisPark.getLatitude(),thisPark.getLongitude()))
                         .title(thisPark.getName()));
                 parxMarkers.add(listMarker);
+
+                geoCircleOptions = new CircleOptions()
+                        .center(new LatLng(thisPark.getLatitude(), thisPark.getLongitude()))
+                        .radius(thisPark.getRadius());
+                thisMap.addCircle(geoCircleOptions);
             }
         }
     }
