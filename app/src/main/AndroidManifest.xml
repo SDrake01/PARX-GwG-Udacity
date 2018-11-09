@@ -87,7 +87,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <service android:name=".Utilities.GeofenceTransitionsUtility" />
+        <service android:name=".Utilities.GeofenceTransitionsUtility">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </service>
 
         <receiver android:name=".AppWidget.ParxAppWidget">
             <intent-filter>

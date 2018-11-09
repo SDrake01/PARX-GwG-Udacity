@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     public static GoogleSignInAccount signedInAccount;
     // ViewModel instance used by the live data observer
     private ParxViewModel parxViewModel;
+    private ParxViewModel stateParkViewModel;
     // Create database objects
     private StateParkDatabase parxDb;
     public static StateParkDao mainParxDao;
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         buildGeofences();
         // Add an observer for the state parks live data and rerun buildGeofences() when its data changes
-        parxViewModel = ViewModelProviders.of(this).get(ParxViewModel.class);
+        stateParkViewModel = ViewModelProviders.of(this).get(ParxViewModel.class);
         final Observer<List<StatePark>> stateParkListObserver = new Observer<List<StatePark>>() {
             @Override
             public void onChanged(@Nullable List<StatePark> stateParks) {
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 buildGeofences();
             }
         };
-        parxViewModel.getAllParxList().observe(this, stateParkListObserver);
+        stateParkViewModel.getAllParxList().observe(this, stateParkListObserver);
     }
 // *******************   End of onCreate method   *******************
 
@@ -247,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
             }catch (SecurityException se){
+                Log.e("Add Geofences", "No Location Permissions");
             }
         }
     }
@@ -263,10 +266,10 @@ public class MainActivity extends AppCompatActivity {
         if (parxGeoPendingIntent != null) {
             return parxGeoPendingIntent;
         }
-        Intent intent = new Intent(this, GeofenceTransitionsUtility.class);
+        Intent intent = new Intent(MainActivity.this, GeofenceTransitionsUtility.class);
         // We use FLAG_UPDATE_CURRENT so that we get the same pending intent back when
         // calling addGeofences() and removeGeofences().
-        parxGeoPendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.
+        parxGeoPendingIntent = PendingIntent.getService(MainActivity.this, 0, intent, PendingIntent.
                 FLAG_UPDATE_CURRENT);
         return parxGeoPendingIntent;
     }

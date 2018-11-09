@@ -68,7 +68,14 @@ public class MainBadgesAdapter extends RecyclerView.Adapter<MainBadgesAdapter.Ba
 
         void bind(int position) {
             ImageManager badgeManager = ImageManager.create(context);
-            badgeManager.loadImage(badgesCardImage, adapterBadgesList.get(position).getUnlockedImageUri());
+            int earned = adapterBadgesList.get(position).getState();
+            if (earned == 1){
+                // If the badge has been earned, show the full color image
+                badgeManager.loadImage(badgesCardImage, adapterBadgesList.get(position).getUnlockedImageUri());
+            }else {
+                // If the badge has not been earned, show the b&w image
+                badgeManager.loadImage(badgesCardImage, adapterBadgesList.get(position).getRevealedImageUri());
+            }
             badgesCardName.setText(adapterBadgesList.get(position).getName());
         }
     }

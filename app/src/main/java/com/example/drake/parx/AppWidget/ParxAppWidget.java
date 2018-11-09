@@ -15,8 +15,13 @@ public class ParxAppWidget extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-        CharSequence widgetEarnedText = context.getString(R.string.appwidget_earned_text);
-        CharSequence widgetVisitedText = context.getString(R.string.appwidget_visited_text);
+        // These are hard-coded until I can get the values for them passed in
+        int earned = 2;
+        int total = 7;
+        int parks = 8;
+
+        CharSequence widgetEarnedText = context.getString(R.string.appwidget_earned_text, earned, total);
+        CharSequence widgetVisitedText = context.getString(R.string.appwidget_visited_text, parks);
         CharSequence widgetTitleText = context.getString(R.string.app_name);
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.parx_app_widget);

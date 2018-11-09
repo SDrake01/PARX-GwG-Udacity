@@ -35,9 +35,8 @@
     <string name="perm_rationale_ok">OK</string>
     <string name="perm_rationale_cancel">Cancel</string>
 
-    <string name="earn_badges_here">Earn These Badges Here:</string>
-    <string name="appwidget_earned_text">You earned ** of ** badges</string>
-    <string name="appwidget_visited_text">by visiting ** state parks</string>
+    <string name="appwidget_earned_text">You earned %1$d of %2$d badges</string>
+    <string name="appwidget_visited_text">by visiting %1$d state parks</string>
     <string name="appwidget_description">parks app widget</string>
     <string name="add_widget">Add widget</string>
 

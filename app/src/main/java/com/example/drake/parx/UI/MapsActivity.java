@@ -1,6 +1,5 @@
 package com.example.drake.parx.UI;
 
-import android.app.PendingIntent;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -12,25 +11,17 @@ import com.example.drake.parx.Data.StateParkMarkers;
 import com.example.drake.parx.R;
 import com.example.drake.parx.Utilities.PermissionsUtility;
 import com.example.drake.parx.ViewModels.ParxViewModel;
-import com.google.android.gms.location.Geofence;
-import com.google.android.gms.location.GeofencingClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap parxActMap;
-    private GeofencingClient parxGeofencingClient;
-    private Geofence capitalGeofence;
-    List<Geofence> parxGeofenceList = new ArrayList<>();
-    private PendingIntent parxGeoPendingIntent;
     ParxViewModel mapViewModel;
     List<StatePark> mapParkList;
 
@@ -38,9 +29,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
-        // Instantiate the GeofencingClient
-        parxGeofencingClient = LocationServices.getGeofencingClient(this);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

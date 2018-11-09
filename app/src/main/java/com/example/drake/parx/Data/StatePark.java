@@ -51,8 +51,8 @@ public class StatePark {
                         500),
                 new StatePark("03resort01",
                         "Blue Licks Battlefield State Resort Park",
-                        38.432394,
-                        -83.995528,
+                        38.182500,// 38.432394,
+                        -84.881139,// -83.995528,
                         500),
                 new StatePark("04park02",
                         "Breaks Interstate Park",
@@ -81,8 +81,8 @@ public class StatePark {
                         500),
                 new StatePark("09resort04",
                         "Cumberland Falls State Resort Park",
-                        38.182249, // 36.837741
-                        -84.881169, //-84.343672
+                        36.837741,
+                        -84.343672,
                         500),
                 new StatePark("10resort05",
                         "Dale Hollow Lake State Resort Park",
