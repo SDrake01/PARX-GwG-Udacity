@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.drake.parx.R;
 import com.google.android.gms.common.images.ImageManager;
 import com.google.android.gms.games.achievement.Achievement;
+
 import java.util.List;
 
 public class MainBadgesAdapter extends RecyclerView.Adapter<MainBadgesAdapter.BadgesViewHolder> {
@@ -68,12 +69,11 @@ public class MainBadgesAdapter extends RecyclerView.Adapter<MainBadgesAdapter.Ba
 
         void bind(int position) {
             ImageManager badgeManager = ImageManager.create(context);
-            int earned = adapterBadgesList.get(position).getState();
-            if (earned == 1){
-                // If the badge has been earned, show the full color image
+            if (adapterBadgesList.get(position).getState() == Achievement.STATE_UNLOCKED){
+                // The badge has been earned, show the full color image
                 badgeManager.loadImage(badgesCardImage, adapterBadgesList.get(position).getUnlockedImageUri());
             }else {
-                // If the badge has not been earned, show the b&w image
+                // The badge has not yet been earned, show the greyscale image
                 badgeManager.loadImage(badgesCardImage, adapterBadgesList.get(position).getRevealedImageUri());
             }
             badgesCardName.setText(adapterBadgesList.get(position).getName());

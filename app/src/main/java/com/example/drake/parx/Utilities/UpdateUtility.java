@@ -1,46 +1,127 @@
 package com.example.drake.parx.Utilities;
 
-public class ProgressUtility {
+import com.example.drake.parx.UI.MainActivity;
+import com.example.drake.parx.ViewModels.ParxViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class UpdateUtility {
 
     public static void updatePark(String parkId){
+        // Reference to MainActivity and strings needed to update achievements
+        MainActivity mainActivity = new MainActivity();
+        List<String> updatingBadges = new ArrayList<>();
+        List<String> incrementBadges = new ArrayList<>();
+        // I have tried to get a reference to the strings in the games_ids.xml file
+        // but everything I tried failed with a null pointer exception,
+        // so I had to hard-code these while I keep trying to see how to get
+        // strings from the res folder to a class that doesn't have a context
+        String appalId = "CgkInO6PsZIPEAIQAQ";
+        String cccId = "CgkInO6PsZIPEAIQAg";
+        String compassId = "CgkInO6PsZIPEAIQBw";
+        String explorerId = "CgkInO6PsZIPEAIQCg";
+        String sadieId = "CgkInO6PsZIPEAIQAw";
+        String sheltoweeId = "CgkInO6PsZIPEAIQBA";
+        String tvaId = "CgkInO6PsZIPEAIQCA";
+        String unbridledId = "CgkInO6PsZIPEAIQBQ";
+
         switch (parkId){
             // All parks update the Unbridled badge
             // just to update version control
             case "01park01":
                 // Barren River State Park
-                // Update TVA badge
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment tva and unbridled badges
+                incrementBadges.add(tvaId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "02hist01":
                 // Big Bone Lick State Historic Site
-                // Update Compass badge
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment compass and unbridles badges
+                incrementBadges.add(compassId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "03resort01":
                 // Blue Licks Battlefield State Resort Park
-                // Update Sheltowee & History badges
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment sheltowee and unbridled badges
+                incrementBadges.add(sheltoweeId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "04park02":
                 // Breaks Interstate Park
-                // Update Compass & Appal badges
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment compass & appal badges
+                incrementBadges.add(compassId);
+                incrementBadges.add(appalId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "05resort02":
                 // Buckhorn Lake State Resort Park
-                // Update Appal badge
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment appal badge
+                incrementBadges.add(appalId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "06park03":
                 // Carr Creek State Park
-                // Update Appal badge
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment appal badge
+                incrementBadges.add(appalId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "07resort03":
                 // Carter Caves State Resort Park
-                // Update Appal & Wildflower badges
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment appal & wildflower badges
+                incrementBadges.add(appalId);
+                incrementBadges.add(sadieId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "08park04":
                 // Columbus-Belmont State Park
-                // Update Compass, CCC, History & TVA badges
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment Compass, CCC, & TVA badges
+                incrementBadges.add(cccId);
+                incrementBadges.add(compassId);
+                incrementBadges.add(tvaId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "09resort04":
                 // Cumberland Falls State Resort Park
-                // Update CCC badge
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment CCC badge
+                incrementBadges.add(cccId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "10resort05":
                 // Dale Hollow Lake State Resort Park

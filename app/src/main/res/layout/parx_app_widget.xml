@@ -29,26 +29,9 @@
         android:layout_below="@+id/iv_widget_icon"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="false"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
+        android:layout_margin="8dp"
         android:contentDescription="@string/appwidget_earned_text"
         android:text="@string/appwidget_earned_text"
-        android:textColor="@color/colorBodyText"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/tv_widget_visited_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_widget_earned_text"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        android:contentDescription="@string/appwidget_earned_text"
-        android:text="@string/appwidget_visited_text"
         android:textColor="@color/colorBodyText"
         android:textSize="18sp" />
 

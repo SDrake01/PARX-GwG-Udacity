@@ -14,8 +14,6 @@ Save this file as res/values/games-ids.xml in your project.
     <string name="achievement_ccc_badge" translatable="false">CgkInO6PsZIPEAIQAg</string>
     <!-- achievement Compass Badge -->
     <string name="achievement_compass_badge" translatable="false">CgkInO6PsZIPEAIQBw</string>
-    <!-- achievement Explorer Badge -->
-    <string name="achievement_explorer_badge" translatable="false">CgkInO6PsZIPEAIQCQ</string>
     <!-- achievement Sadie F Price Wildflower Badge -->
     <string name="achievement_sadie_f_price_wildflower_badge" translatable="false">CgkInO6PsZIPEAIQAw</string>
     <!-- achievement Sheltowee Badge -->
@@ -24,4 +22,6 @@ Save this file as res/values/games-ids.xml in your project.
     <string name="achievement_tva_badge" translatable="false">CgkInO6PsZIPEAIQCA</string>
     <!-- achievement Unbridled Badge -->
     <string name="achievement_unbridled_badge" translatable="false">CgkInO6PsZIPEAIQBQ</string>
+    <!-- achievement Explorer Badge -->
+    <string name="achievement_explorer_badge" translatable="false">CgkInO6PsZIPEAIQCg</string>
 </resources>

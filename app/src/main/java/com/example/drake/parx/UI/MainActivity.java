@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.drake.parx.AsyncTasks.StateParksAsyncTask;
+import com.example.drake.parx.Data.AppWidgetData;
 import com.example.drake.parx.Data.StatePark;
 import com.example.drake.parx.Data.StateParkDao;
 import com.example.drake.parx.Data.StateParkDatabase;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     public static GoogleSignInAccount signedInAccount;
     // ViewModel instance used by the live data observer
     private ParxViewModel parxViewModel;
-    private ParxViewModel stateParkViewModel;
+//    private ParxViewModel stateParkViewModel;
     // Create database objects
     private StateParkDatabase parxDb;
     public static StateParkDao mainParxDao;
@@ -64,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
     StatePark geoPark;
     PendingIntent parxGeoPendingIntent;
     GeofencingClient parxGeofencingClient;
+    // String variables used to update and increment the google play games achievements
+    private List<String> updateBadges;
+    private String updateOne;
+    private List<String> incrementBadges;
+    private String incrementOne;
 
 
     @Override
@@ -95,13 +101,24 @@ public class MainActivity extends AppCompatActivity {
                 // Call recyclerview adapter setBadges method when the
                 // live data list is updated to show the updates on screen
                 BadgesFragment.badgesAdapter.setBadges(achievements);
+                // Update background data for the widget when the achievements data changes
+                int earned=0;
+                int total=0;
+                for (int i = 0;i<achievements.size();i++){
+                    total++;
+                    if (achievements.get(i).getState() == Achievement.STATE_UNLOCKED){
+                        earned++;
+                    }
+                }
+                AppWidgetData.setWidgetEarned(earned);
+                AppWidgetData.setWidgetTotal(total);
             }
         };
         parxViewModel.getPlayerAchievementList().observe(this, achievementObserver);
 
         buildGeofences();
         // Add an observer for the state parks live data and rerun buildGeofences() when its data changes
-        stateParkViewModel = ViewModelProviders.of(this).get(ParxViewModel.class);
+//        parxViewModel = ViewModelProviders.of(this).get(ParxViewModel.class);
         final Observer<List<StatePark>> stateParkListObserver = new Observer<List<StatePark>>() {
             @Override
             public void onChanged(@Nullable List<StatePark> stateParks) {
@@ -110,9 +127,41 @@ public class MainActivity extends AppCompatActivity {
                 buildGeofences();
             }
         };
-        stateParkViewModel.getAllParxList().observe(this, stateParkListObserver);
-    }
-// *******************   End of onCreate method   *******************
+        parxViewModel.getAllParxList().observe(this, stateParkListObserver);
+
+        // Add an observer for the updated badges live data list and send the updates to google play games services
+        final Observer<List<String>> updateBadgesListObserver = new Observer<List<String>>() {
+            @Override
+            public void onChanged(@Nullable List<String> strings) {
+                updateBadges = strings;
+                for (int i = 0; i < updateBadges.size(); i++){
+                    updateOne = updateBadges.get(i);
+                    Games.getAchievementsClient(
+                            MainActivity.this,
+                            GoogleSignIn.getLastSignedInAccount(
+                                    MainActivity.this))
+                            .unlock(updateOne);
+                }
+            }
+        };
+        parxViewModel.getUpdateBadgeList().observe(this, updateBadgesListObserver);
+        // Add an observer for the incremented badges live data list and send the increments to gpgs
+        final Observer<List<String>> incrementBadgesListObserver = new Observer<List<String>>() {
+            @Override
+            public void onChanged(@Nullable List<String> strings) {
+                incrementBadges = strings;
+                for (int i = 0; i < incrementBadges.size(); i++) {
+                    incrementOne = incrementBadges.get(i);
+                    Games.getAchievementsClient(
+                            MainActivity.this,
+                            GoogleSignIn.getLastSignedInAccount(
+                                    MainActivity.this))
+                            .increment(incrementOne, 1);
+                }
+            }
+        };
+        parxViewModel.getIncrementBadgeList().observe(this, incrementBadgesListObserver);
+    } // *******************   End of onCreate method   *******************
 
 
     // Inflate the menu in the actionbar
@@ -272,5 +321,17 @@ public class MainActivity extends AppCompatActivity {
         parxGeoPendingIntent = PendingIntent.getService(MainActivity.this, 0, intent, PendingIntent.
                 FLAG_UPDATE_CURRENT);
         return parxGeoPendingIntent;
+    }
+
+    // Unlock achievements passed in from UpdateUtility
+    public void achieveUnlock(String achieveId){
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainActivity.this)).unlock(achieveId);
+    }
+    // Increment achievements passed in from UpdateUtilty
+    public void achieveIncrement(String achieveId) {
+        if (signedInAccount != null) {
+            Games.getAchievementsClient(this, signedInAccount)
+                    .increment(achieveId, 1);
+        }
     }
 }

@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.widget.RemoteViews;
 
+import com.example.drake.parx.Data.AppWidgetData;
 import com.example.drake.parx.R;
 
 /**
@@ -16,17 +17,14 @@ public class ParxAppWidget extends AppWidgetProvider {
                                 int appWidgetId) {
 
         // These are hard-coded until I can get the values for them passed in
-        int earned = 2;
-        int total = 7;
-        int parks = 8;
+        int earned = AppWidgetData.getWidgetEarned();
+        int total = AppWidgetData.getWidgetTotal();
 
         CharSequence widgetEarnedText = context.getString(R.string.appwidget_earned_text, earned, total);
-        CharSequence widgetVisitedText = context.getString(R.string.appwidget_visited_text, parks);
         CharSequence widgetTitleText = context.getString(R.string.app_name);
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.parx_app_widget);
         views.setTextViewText(R.id.tv_widget_earned_text, widgetEarnedText);
-        views.setTextViewText(R.id.tv_widget_visited_text, widgetVisitedText);
         views.setTextViewText(R.id.tv_widget_title, widgetTitleText);
         views.setImageViewResource(R.id.iv_widget_icon,R.mipmap.ic_launcher);
 

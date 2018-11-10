@@ -39,8 +39,8 @@ public class GeofenceTransitionsUtility extends IntentService {
                 String enterFenceId = geofencingEvent.getTriggeringGeofences().get(0).getRequestId();
                 ParkByIndexAsyncTask parkByIndexAsyncTask = new ParkByIndexAsyncTask(this);
                 parkByIndexAsyncTask.execute(enterFenceId);
-                // Send enteredFenceId to ProgressUtility.updatePark to update the players progress
-                ProgressUtility.updatePark(enterFenceId);
+                // Send enteredFenceId to UpdateUtility.updatePark to update the players progress
+                UpdateUtility.updatePark(enterFenceId);
             } // *************** End of GEOFENCE_TRANSITION_ENTER handler ***************
             else if (Geofence.GEOFENCE_TRANSITION_EXIT == transitionCode){
                 // During testing, show a toast notifying the player
