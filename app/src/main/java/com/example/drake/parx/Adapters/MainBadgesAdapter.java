@@ -15,6 +15,9 @@ import com.google.android.gms.games.achievement.Achievement;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainBadgesAdapter extends RecyclerView.Adapter<MainBadgesAdapter.BadgesViewHolder> {
 
     private Context context;
@@ -52,17 +55,21 @@ public class MainBadgesAdapter extends RecyclerView.Adapter<MainBadgesAdapter.Ba
 
     class BadgesViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView badgesCardName;
-        final ImageView badgesCardImage;
+//        final TextView badgesCardName;
+//        final ImageView badgesCardImage;
         final Context context;
+        // Annotate views for use with Butterknife
+        @BindView(R.id.tv_main_badges_card_name) TextView badgesCardName;
+        @BindView(R.id.iv_main_badges_card_image) ImageView badgesCardImage;
 
         public BadgesViewHolder(Context context, View itemView) {
             super(itemView);
 
-            badgesCardName = itemView.findViewById(R.id.tv_main_badges_card_name);
-            badgesCardImage = itemView.findViewById(R.id.iv_main_badges_card_image);
+//            badgesCardName = itemView.findViewById(R.id.tv_main_badges_card_name);
+//            badgesCardImage = itemView.findViewById(R.id.iv_main_badges_card_image);
 
             this.context = context;
+            ButterKnife.bind(this, itemView);
             // Delete on click listener if not needed for the project
 //            itemView.setOnClickListener(this);
         }

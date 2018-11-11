@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.example.drake.parx.Data.StatePark;
 import com.example.drake.parx.Data.StateParkMarkers;
@@ -19,16 +20,26 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap parxActMap;
     ParxViewModel mapViewModel;
     List<StatePark> mapParkList;
+    // Annotate views for use with Butterknife
+    @BindView(R.id.maps_toolbar) Toolbar mapsToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        ButterKnife.bind(this);
+//        Toolbar mapsToolbar = findViewById(R.id.maps_toolbar);
+        setSupportActionBar(mapsToolbar);
+        // Add up navigation to the action bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

@@ -106,7 +106,7 @@ public class UpdateUtility {
                 // Update explorer badge
                 updatingBadges.add(explorerId);
                 ParxViewModel.setUpdateBadgeList(updatingBadges);
-                // Increment Compass, CCC, & TVA badges
+                // Increment compass, ccc, & tva badges
                 incrementBadges.add(cccId);
                 incrementBadges.add(compassId);
                 incrementBadges.add(tvaId);
@@ -118,34 +118,70 @@ public class UpdateUtility {
                 // Update explorer badge
                 updatingBadges.add(explorerId);
                 ParxViewModel.setUpdateBadgeList(updatingBadges);
-                // Increment CCC badge
+                // Increment ccc badge
                 incrementBadges.add(cccId);
                 incrementBadges.add(unbridledId);
                 ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "10resort05":
                 // Dale Hollow Lake State Resort Park
-                // Update Compass & TVA badges
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment compass & tva badges
+                incrementBadges.add(compassId);
+                incrementBadges.add(tvaId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "11park05":
                 // Dawkins Line Rail Trail
-                //
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment unbridled badge only
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "12hist02":
                 // Dr. Thomas Walker State Historic Site
                 // Update Appal & History badges
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment CCC badge
+                incrementBadges.add(cccId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "13park06":
                 // E.P. 'Tom' Sawyer State Park
-                //
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment unbridled badge only
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "14park07":
                 // Fort Boonesborough State Park
                 // Update Sheltowee & History badges
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment sheltowee badge
+                incrementBadges.add(sheltoweeId);
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "15park08":
                 // General Burnside Island State Park
-                //
+                // Update explorer badge
+                updatingBadges.add(explorerId);
+                ParxViewModel.setUpdateBadgeList(updatingBadges);
+                // Increment unbridled badge only
+                incrementBadges.add(unbridledId);
+                ParxViewModel.setIncrementBadgeList(incrementBadges);
                 break;
             case "16resort06":
                 // General Butler State Resort Park

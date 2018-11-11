@@ -1,6 +1,5 @@
 package com.example.drake.parx.UI;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,24 +12,27 @@ import android.view.ViewGroup;
 
 import com.example.drake.parx.Adapters.MainBadgesAdapter;
 import com.example.drake.parx.R;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.games.Games;
-import com.google.android.gms.tasks.OnSuccessListener;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public class BadgesFragment extends Fragment {
 
     View view;
-    private RecyclerView badgesRecyclerView;
     private static LinearLayoutManager badgesLayoutManager;
     public static MainBadgesAdapter badgesAdapter;
     SnapHelper helper;
     private static final int RC_ACHIEVEMENT_UI = 9003;
+    // Annotate views for use with Butterknife
+    @BindView(R.id.rv_fragment_badges_recyclerview) RecyclerView badgesRecyclerView;
+    private Unbinder badgesUnbinder;
 
 //    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
         view = inflater.inflate(R.layout.fragment_badges, container, false);
-        badgesRecyclerView = view.findViewById(R.id.rv_fragment_badges_recyclerview);
+        badgesUnbinder = ButterKnife.bind(this, view);
 
         badgesLayoutManager = new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false);
         badgesRecyclerView.setLayoutManager(badgesLayoutManager);
@@ -40,6 +42,11 @@ public class BadgesFragment extends Fragment {
         helper.attachToRecyclerView(badgesRecyclerView);
 
         return view;
+    }
+
+    @Override public void onDestroyView() {
+        super.onDestroyView();
+        badgesUnbinder.unbind();
     }
 
 }

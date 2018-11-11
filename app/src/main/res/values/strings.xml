@@ -40,4 +40,14 @@
     <string name="appwidget_description">parks app widget</string>
     <string name="add_widget">Add widget</string>
 
+    <string name="geofence_transition_name">GeofenceTransitionUtility</string>
+    <string name="geofence_transition_tag">GeofenceUtility</string>
+    <string name="geofence_transition_location_error">Location services error code: </string>
+    <string name="geofence_transition_fence_exited">Geofence exited: </string>
+
+    <string name="notification_channel">9</string>
+    <string name="notification_title">PARX Badge Progress Notice</string>
+    <string name="notification_text">For visiting </string>
+
+
 </resources>

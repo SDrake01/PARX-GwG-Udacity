@@ -1,5 +1,6 @@
 package com.example.drake.parx.UI;
 
+import android.app.ActivityOptions;
 import android.app.PendingIntent;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -9,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -45,6 +47,9 @@ import com.google.android.gms.tasks.Task;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
     // Request code used when invoking an external client
@@ -70,12 +75,18 @@ public class MainActivity extends AppCompatActivity {
     private String updateOne;
     private List<String> incrementBadges;
     private String incrementOne;
+    // Annotate views for use with Butterknife
+    @BindView(R.id.main_toolbar) Toolbar mainToolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+//        Toolbar mainToolbar = findViewById(R.id.main_toolbar);
+        setSupportActionBar(mainToolbar);
+
 
         // Instantiate the GeofencingClient
         parxGeofencingClient = LocationServices.getGeofencingClient(this);
@@ -179,12 +190,22 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_about:
                 // Open about PARX activity
                 Intent aboutIntent = new Intent(this, AboutActivity.class);
-                this.startActivity(aboutIntent);
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
+                    startActivity(aboutIntent, bundle);
+                } else {
+                    startActivity(aboutIntent);
+                }
                 break;
             case R.id.menu_how:
                 // Open how it works activity
                 Intent howIntent = new Intent(this, HowActivity.class);
-                this.startActivity(howIntent);
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
+                    startActivity(howIntent, bundle);
+                } else {
+                    startActivity(howIntent);
+                }
                 break;
             case R.id.menu_badges:
                 // Open default all achievements activity from Google Play Games API
